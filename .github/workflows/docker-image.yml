@@ -10,7 +10,9 @@ env:
   # Use ghcr.io for GitHub Container Registry
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }} # keep this line
+IMAGE_NAME_LOWER: ${{ github.repository }} # new lowercase version
+
 
 jobs:
   build:
@@ -37,7 +39,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/cosmic-hackers/ollamadeep
+
 
       - name: Build and push Docker image
         id: build-and-push
